@@ -1,4 +1,4 @@
-package is.ryt.app.web_core.auth.model;
+package is.ryt.app.model.auth;
 
 import lombok.Getter;
 import lombok.Setter;

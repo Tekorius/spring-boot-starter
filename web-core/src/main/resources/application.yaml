@@ -5,6 +5,7 @@ app:
         jwt:
             secret: ThisIsAVerySecretJwtSecretWhichNeedsToBeChanged
 
+
 server:
     port: 8080
 

@@ -1,7 +1,6 @@
 package is.ryt.app.security;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -25,16 +24,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String token = extractJwtFromRequest(request);
+        try {
+            String token = extractJwtFromRequest(request);
 
-        if (token != null) {
-            UserPrincipal principal = tokenProvider.getUserPrincipalFromToken(token);
-            Authentication authentication = new UserPrincipalAuthentication(principal);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+            if (token != null) {
+                UserPrincipal principal = tokenProvider.getUserPrincipalFromToken(token);
+                Authentication authentication = new UserPrincipalAuthentication(principal);
+                SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            log.debug("JWT Token Provided - setting authentication in security context");
-        } else {
-            log.debug("No JWT Token Provided");
+                log.debug("JWT Token Provided - setting authentication in security context");
+            } else {
+                log.debug("No JWT Token Provided");
+            }
+        } catch (Exception e) {
+            log.debug("JWT Authentication error", e);
         }
 
         filterChain.doFilter(request, response);

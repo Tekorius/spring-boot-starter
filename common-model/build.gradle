@@ -12,16 +12,13 @@ repositories {
 }
 
 dependencies {
-    implementation project(':common-model')
-
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    implementation 'com.auth0:java-jwt:3.14.0'
 
     // Lombok
     compileOnly 'org.projectlombok:lombok:1.18.18'
     annotationProcessor 'org.projectlombok:lombok:1.18.18'
+
+    // Swagger
+    implementation 'org.springdoc:springdoc-openapi-ui:1.5.5'
 
     // Test
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'

@@ -1,4 +1,5 @@
 rootProject.name = 'spring-starter'
 include 'web-core'
 include 'common-security'
+include 'common-model'
 

@@ -17,6 +17,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(':common-model')
     implementation project(':common-security')
 
     // Spring
@@ -25,6 +26,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    compileOnly 'org.springframework.boot:spring-boot-devtools'
 
     // Database
     implementation 'mysql:mysql-connector-java:8.0.23'
@@ -34,6 +36,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.18'
     annotationProcessor 'org.projectlombok:lombok:1.18.18'
 
+    // Swagger
+    implementation 'org.springdoc:springdoc-openapi-ui:1.5.5'
+    implementation 'org.springdoc:springdoc-openapi-security:1.5.5'
 
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
