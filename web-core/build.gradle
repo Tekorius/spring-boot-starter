@@ -1,0 +1,44 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '2.4.0'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+group 'is.ryt'
+version '1.0-SNAPSHOT'
+
+test {
+    useJUnitPlatform()
+    systemProperty 'spring.profiles.active', 'test'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':common-security')
+
+    // Spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // Database
+    implementation 'mysql:mysql-connector-java:8.0.23'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.1'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.18'
+    annotationProcessor 'org.projectlombok:lombok:1.18.18'
+
+
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+    testRuntimeOnly 'com.h2database:h2:1.4.200'
+}

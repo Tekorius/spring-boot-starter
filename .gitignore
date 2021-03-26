@@ -1,0 +1,7 @@
+/.idea/
+/**/out/
+/**/target/
+/.docker/
+/**/build/
+/**/.gradle/
+.DS_Store

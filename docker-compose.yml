@@ -1,0 +1,36 @@
+version: '3.5'
+
+services:
+    database:
+        image: mysql:8.0
+        container_name: app_database
+        volumes:
+            - .docker/data/db:/var/lib/mysql:cached
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+            MYSQL_DATABASE: app_db
+            MYSQL_USER: app_user
+            MYSQL_PASSWORD: passwordux
+        ports:
+            - 3306:3306
+
+#    rabbitmq:
+#        image: rabbitmq:management
+#        container_name: app_rabbitmq
+#        ports:
+#            - 5672:5672
+#            - 15672:15672
+
+#    minio:
+#        image: minio/minio
+#        container_name: app_minio
+#        ports:
+#            - 9000:9000
+#        volumes:
+#            - ./.docker/minio:/data
+#        environment:
+#            MINIO_ACCESS_KEY: some_access_key1
+#            MINIO_SECRET_KEY: some_secret_key1
+#        command: server /data
