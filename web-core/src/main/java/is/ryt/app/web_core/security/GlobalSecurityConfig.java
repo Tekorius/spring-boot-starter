@@ -13,6 +13,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * A default fallback security config that will catch all requests if they haven't been handled by other
+ * security configs. Also contains system wide security configurations such as password encoders and annotations.
+ */
 @Configuration
 @EnableGlobalMethodSecurity(
         securedEnabled = true,
@@ -54,14 +58,4 @@ public class GlobalSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     }
-
-    /*@Bean
-    public JwtTokenProvider jwtTokenProvider() {
-        return new JwtTokenProvider("bla", 3000*60*60, 3000*60*60);
-    }*/
-
-    /*@Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter(jwtTokenProvider);
-    }*/
 }

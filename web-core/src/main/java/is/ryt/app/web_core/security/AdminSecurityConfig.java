@@ -10,6 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * Handles endpoints starting with {@code /admin} and has a token filter. Admin endpoints require current
+ * user to have {@code ROLE_ADMIN} to be able to access those endpoints.
+ */
 @Configuration
 @Order(95)
 public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -32,6 +36,7 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.antMatcher("/admin/**")
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .authorizeRequests()
                 .anyRequest().hasRole("ADMIN");
     }

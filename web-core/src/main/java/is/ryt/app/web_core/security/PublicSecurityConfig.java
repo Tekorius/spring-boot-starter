@@ -7,6 +7,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
+/**
+ * Handles endpoints starting with {@code /public}. Does not require a token to access those endpoints and
+ * doesn't have token filters at all
+ */
 @Configuration
 @Order(99)
 public class PublicSecurityConfig extends WebSecurityConfigurerAdapter {
