@@ -13,7 +13,7 @@ configurations:
   config that will catch all requests if they haven't
   been handled by other security configs. Also contains
   system wide security configurations such as password
-  encoders and annotations
+  encoders and annotations.
 * `PublicSecurityConfig` - Configuration of public endpoints
   that can be reached without a token. Pretty much all
   endpoints starting with `/public` will be handled by this
@@ -26,4 +26,7 @@ configurations:
   having this config separate allows for easier refactoring
   of admin functionality into a separate submodule.
 * `SwaggerSecurityConfig` - Exposes endpoints provided by
-  SpringDoc plugin
+  SpringDoc plugin.
+* `DevSecurityConfig` - Configuration which only gets
+  loaded when `dev` profile is active. Allows accessing
+  development features such as H2-console.

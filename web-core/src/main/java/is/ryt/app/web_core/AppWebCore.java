@@ -14,8 +14,6 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 @ComponentScan(basePackages = {"is.ryt.app"})
 @ConfigurationPropertiesScan("is.ryt.app")
 public class AppWebCore {
-    // TODO: FIX AUTHORITIES
-
     public static void main(String[] args) {
         SpringApplication.run(AppWebCore.class, args);
     }

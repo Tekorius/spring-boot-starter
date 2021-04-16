@@ -30,6 +30,7 @@ dependencies {
     compileOnly 'org.springframework.boot:spring-boot-devtools'
 
     // Database
+    runtimeOnly 'com.h2database:h2:1.4.200'
     implementation 'mysql:mysql-connector-java:8.0.23'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.1'
 
