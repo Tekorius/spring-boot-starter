@@ -5,6 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.InvalidClaimException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
@@ -44,7 +45,9 @@ public class JwtTokenProvider {
                 .withSubject(String.valueOf(principal.getUserId()))
                 .withIssuedAt(now)
                 .withExpiresAt(expiryDate)
-                .withClaim(CLAIMS_AUTHORITIES, new ArrayList<>(principal.getAuthorities()))
+                .withClaim(CLAIMS_AUTHORITIES, principal.getAuthorities().stream()
+                        .map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toUnmodifiableList()))
                 .withClaim(CLAIMS_USERNAME, principal.getUsername())
                 .sign(Algorithm.HMAC512(jwtSecret));
     }

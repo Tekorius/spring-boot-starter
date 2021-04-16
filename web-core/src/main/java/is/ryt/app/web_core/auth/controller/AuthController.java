@@ -7,12 +7,16 @@ import is.ryt.app.model.auth.LoginRequest;
 import is.ryt.app.security.JwtTokenProvider;
 import is.ryt.app.security.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.List;
 
 @Tag(name = "Auth", description = "Endpoints used to generate authentication tokens")
 @RestController
@@ -23,8 +27,9 @@ public class AuthController {
 
     @Operation(summary = "Generate JWT token using credentials")
     @PostMapping("/login")
-    public AuthTokenResponse login(@RequestBody LoginRequest request) {
+    public AuthTokenResponse login(@RequestBody @Validated LoginRequest request) {
         UserPrincipal principal = new UserPrincipal(123L, "Bla", Collections.emptyList());
+//        UserPrincipal principal = new UserPrincipal(123L, "Bla", List.of(new SimpleGrantedAuthority("ROLE_ADMIN")));
 
         var response = new AuthTokenResponse();
         response.setToken(tokenProvider.generateDefaultToken(principal));
