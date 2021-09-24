@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
-    id 'org.springframework.boot' version '2.4.5'
-    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
 }
 
 group 'is.ryt'
@@ -30,22 +30,22 @@ dependencies {
     compileOnly 'org.springframework.boot:spring-boot-devtools'
 
     // Database
-    runtimeOnly 'com.h2database:h2:1.4.200'
-    implementation 'mysql:mysql-connector-java:8.0.23'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.1'
+    runtimeOnly "com.h2database:h2:$h2Version"
+    implementation "mysql:mysql-connector-java:$mysqlConnectorVersion"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonJsr310Version"
 
     // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.18'
-    annotationProcessor 'org.projectlombok:lombok:1.18.18'
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
     // Swagger
-    implementation 'org.springdoc:springdoc-openapi-ui:1.5.7'
-    implementation 'org.springdoc:springdoc-openapi-security:1.5.7'
+    implementation "org.springdoc:springdoc-openapi-ui:$springdocVersion"
+    implementation "org.springdoc:springdoc-openapi-security:$springdocVersion"
 
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
-    testRuntimeOnly 'com.h2database:h2:1.4.200'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    testRuntimeOnly "com.h2database:h2:$h2Version"
 }

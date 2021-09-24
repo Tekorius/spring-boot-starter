@@ -1,2 +1,14 @@
 plugins {
+    id 'org.springframework.boot' version '2.5.5'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+ext {
+    // Global versions used within submodules
+    h2Version = '1.4.200'
+    mysqlConnectorVersion = '8.0.25'
+    jacksonJsr310Version = '2.12.5'
+    lombokVersion = '1.18.20'
+    springdocVersion = '1.5.10'
+    junitVersion = '5.8.0'
 }
