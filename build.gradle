@@ -10,5 +10,4 @@ ext {
     jacksonJsr310Version = '2.12.5'
     lombokVersion = '1.18.20'
     springdocVersion = '1.5.10'
-    junitVersion = '5.8.0'
 }

@@ -7,6 +7,11 @@ plugins {
 group 'is.ryt'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = 11
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
 repositories {
     mavenCentral()
 }
@@ -21,8 +26,8 @@ dependencies {
     implementation "org.springdoc:springdoc-openapi-ui:$springdocVersion"
 
     // Test
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 }
 
 test {

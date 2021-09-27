@@ -7,6 +7,11 @@ plugins {
 group 'is.ryt'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = 11
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
 test {
     useJUnitPlatform()
     systemProperty 'spring.profiles.active', 'test'
@@ -45,7 +50,7 @@ dependencies {
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
     testRuntimeOnly "com.h2database:h2:$h2Version"
 }

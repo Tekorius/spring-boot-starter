@@ -2,7 +2,7 @@ package is.ryt.app.web_core.security;
 
 import is.ryt.app.security.JwtAuthenticationEntryPoint;
 import is.ryt.app.security.JwtAuthenticationFilter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * security configs. Also contains system wide security configurations such as password encoders and annotations.
  */
 @Configuration
+@RequiredArgsConstructor
 @EnableGlobalMethodSecurity(
         securedEnabled = true,
         jsr250Enabled = true,
@@ -27,15 +28,6 @@ public class GlobalSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final JwtAuthenticationEntryPoint unauthorizedHandler;
-
-    @Autowired
-    public GlobalSecurityConfig(
-            JwtAuthenticationFilter jwtAuthenticationFilter,
-            JwtAuthenticationEntryPoint unauthorizedHandler
-    ) {
-        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-        this.unauthorizedHandler = unauthorizedHandler;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
